@@ -1,0 +1,47 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Employee {
+  id            String             @id @default(cuid())
+  displayName   String
+  leaveBalances LeaveTypeBalance[]
+  leaveRequests LeaveRequest[]
+}
+
+model LeaveTypeBalance {
+  id            String   @id @default(cuid())
+  employee      Employee @relation(fields: [employeeId], references: [id])
+  employeeId    String
+  leaveTypeId   String
+  leaveTypeName String
+  availableDays Float
+
+  @@index([employeeId])
+  @@index([leaveTypeId])
+}
+
+model LeaveRequest {
+  id            String             @id @default(cuid())
+  employee      Employee           @relation(fields: [employeeId], references: [id])
+  employeeId    String
+  leaveTypeId   String
+  leaveTypeName String
+  fromDateUTC   DateTime
+  toDateUTC     DateTime
+  status        LeaveRequestStatus @default(PENDING)
+  createdAtUTC  DateTime           @default(now())
+
+  @@index([employeeId, createdAtUTC])
+}
+
+enum LeaveRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}

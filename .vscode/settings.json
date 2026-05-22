@@ -13,6 +13,9 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [80, 120],
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH};C:\\Program Files\\nodejs"
+    },
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

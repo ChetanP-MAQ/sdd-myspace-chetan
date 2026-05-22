@@ -81,6 +81,16 @@ This project uses SpecKit for feature specification and implementation planning:
 4. **Implement** - Execute tasks in dependency order
 5. **Analyze** - Validate consistency and quality
 
+## Leave Dashboard Widget
+
+The dashboard widget provides a compact leave experience for employees:
+
+- Displays current leave balances for up to 10 leave types
+- Lists the 5 most recent leave requests with readable status badges
+- Provides a compact leave request form with leave type, from-date, and to-date fields
+- Includes inline validation and submission feedback
+- Verified performance within 500 ms for a representative 10-type/5-request render slice
+
 ## Contributing
 
 1. Create a feature branch: `git checkout -b feature/your-feature`
