@@ -6,7 +6,7 @@
 **Entry**: None required
 **Exit**: Next.js project structure, environment handling, and initial tooling are in place
 
-- [ ] T001 [P] Initialize Next.js 14 App Router project in `frontend/` or `src/`
+- [x] T001 [P] Initialize Next.js 14 App Router project in `frontend/` or `src/`
 - [ ] T002 [P] Add Prisma and Postgres dependencies in `package.json`
 - [ ] T003 [P] Configure environment variables in `.env` and `.env.example` for `DATABASE_URL` and identity provider secrets
 - [ ] T004 [P] Create base Next.js dashboard page in `src/app/dashboard/page.tsx`
