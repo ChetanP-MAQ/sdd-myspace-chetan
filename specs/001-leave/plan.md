@@ -8,14 +8,16 @@ This plan delivers a dashboard-first leave widget for MySpace portal using Next.
 - **Backend**: Prisma ORM querying Postgres via `process.env.DATABASE_URL`.
 - **Auth**: Centralized identity provider integration via NextAuth or equivalent provider adapter; no local user accounts.
 - **Observability**: Write operations emit structured logs with `actor`, `action`, and `entity_id` through a centralized logging utility.
+- **Persona focus**: The widget is designed so the P1 employee can manage leave from the dashboard without leaving their primary work view.
 
 ## Widget Data Flow
 1. On dashboard render, a Next.js server component calls a service `getEmployeeLeaveDashboard(employeeId)`.
 2. The service performs two optimized Prisma queries:
    - active leave balances for up to 10 leave types
    - latest 5 leave requests sorted by `createdAtUTC` descending
-3. The widget renders balance rows and request status cards in a compact responsive layout.
-4. The client-side apply form submits via a Next.js API route or server action to create a new leave request.
+3. The widget renders balance rows and request status cards including each request's submitted date and status in a compact responsive layout.
+4. If no recent leave requests exist, the widget renders a clear placeholder message stating that no recent leave requests are available.
+5. The client-side apply form submits via a Next.js API route or server action to create a new leave request.
 
 ## Primary Read Design for NFRs
 - **NFR-001 (p95 ≤ 500 ms)**
